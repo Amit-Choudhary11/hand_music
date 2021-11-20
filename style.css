@@ -1,0 +1,39 @@
+body{
+    background-size: contain;
+    background-position: center;
+
+}
+
+.title{
+    width:100%;
+    line-height:20px;
+    margin-top: 0;
+    float: none;
+    font-size: larger;
+    box-shadow: 5px 7px 5px black;
+}
+
+.gif img{
+   width:150px;
+   height:150px; 
+   border-radius: 150px;
+}
+
+
+.play{
+    width: 8%;
+    font-size: 20px;
+
+}
+
+#heading{
+    font-size: x-large;
+    padding-top: 10px;
+    font-weight: 700;
+}
+
+#note{
+    color: red;
+}
+
+
