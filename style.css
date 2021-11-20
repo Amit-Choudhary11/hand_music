@@ -36,4 +36,11 @@ body{
     color: red;
 }
 
+canvas{
+    border-radius: 20px;
+    border-color: white;
+    border-width: 6px;
+    border-style: solid;
+}
+
 
