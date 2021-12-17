@@ -6,9 +6,16 @@ lWY="";
 rWX="";
 rWY="";
 
+songPlaying="";
+
+lWScore="";
+rWScore="";
+marioIsPlaying="";
+hPIsPlaying="";
+
 function preload(){
 mario= loadSound("smb3-overworld.mp3");
-harryPotter= loadSound("music.mp3");
+hP= loadSound("music.mp3");
 }
 
 
@@ -26,6 +33,30 @@ poseNet.on('pose', gotResults);
 
 function draw(){
 image(video,0,0,530,400);
+
+marioIsPlaying= mario.isPlaying();
+hPIsPlaying= hP.isPlaying();
+
+if(lWScore > 0.5){
+    fill("#FF0000");
+    stroke("#FF0000");
+    circle(lWX,lWY,20);
+    hP.stop();
+    mario.play();
+    songPlaying="Mario";
+}
+
+if(rWScore > 0.5){
+    fill("#FF0000");
+    stroke("#FF0000");
+    circle(rWX,rWY,20);
+    mario.stop();
+    hP.play();
+    songPlaying="Harry Potter";
+}
+
+document.getElementById("songName").innerHTML="Song Playing: " + songPlaying;
+
 }
 
 function modelLoaded(){
@@ -40,6 +71,9 @@ function gotResults(results){
 
         rWX= results[0].pose.rightWrist.x;
         rWY= results[0].pose.rightWrist.y;
+
+        lWScore= results[0].pose.keypoints[9].score;
+        rWScore= results[0].pose.keypoints[10].score;
 
         console.log("LWX = " + lWX, "LWY = " + lWY);
         console.log("RWX = " + rWX, "RWY = " + rWY);
